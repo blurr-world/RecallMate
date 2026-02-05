@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph_main.xml"
+    app:startDestination="@id/graphSignUpFragment">
+
+    <fragment
+        android:id="@+id/graphSignUpFragment"
+        android:name="com.madinaappstudio.recallmate.auth.ui.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up">
+
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_signUp_to_signIn"
+            app:destination="@id/graphSignInFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/graphSignInFragment"
+        android:name="com.madinaappstudio.recallmate.auth.ui.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_signInFrag_to_signUpFrag"
+            app:destination="@id/graphSignUpFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_signInFrag_to_resetPassFrag"
+            app:destination="@id/graphResetPassFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/graphResetPassFragment"
+        android:name="com.madinaappstudio.recallmate.auth.ui.ResetPassFragment"
+        android:label="ResetPassFragment"
+        tools:layout="@layout/fragment_reset_pass">
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_resetPassFrag_to_signInFrag"
+            app:destination="@id/graphSignInFragment" />
+    </fragment>
+
+</navigation>

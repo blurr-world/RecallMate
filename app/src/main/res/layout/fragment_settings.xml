@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarSettings"
+        app:title="Settings"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/Material.Toolbar.Title.Bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingBottom="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvSettingsProfile"
+                android:layout_width="82dp"
+                android:layout_height="82dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="41dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/imgSettingsProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtSettingsUserName"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtSettingsUserEmail"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSettingsEdit"
+                android:text="Edit profile"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_margin="16dp"
+                app:cardElevation="1dp"
+                app:shapeAppearanceOverlay="@style/RoundedCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:padding="4dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <include
+                        android:id="@+id/btnSettingsNotification"
+                        layout="@layout/item_setting_notification"/>
+
+                    <include
+                        android:id="@+id/btnSettingsLang"
+                        layout="@layout/item_setting_language"/>
+
+                    <include
+                        android:id="@+id/btnSettingsPrivacy"
+                        layout="@layout/item_setting_privacy"/>
+
+                    <include
+                        android:id="@+id/btnSettingsHelp"
+                        layout="@layout/item_setting_help"/>
+
+                    <include
+                        android:id="@+id/btnSettingsAbout"
+                        layout="@layout/item_setting_about"/>
+
+                    <View android:layout_height="8dp" android:layout_width="0dp"/>
+
+                    <include
+                        android:id="@+id/btnSettingsLogout"
+                        layout="@layout/item_setting_logout"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

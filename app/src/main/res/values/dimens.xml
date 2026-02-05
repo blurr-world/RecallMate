@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="radius_button">12dp</dimen>
+    <dimen name="radius_card">16dp</dimen>
+    <dimen name="radius_text_input">12dp</dimen>
+    <dimen name="radius_dialog">20dp</dimen>
+
+    <dimen name="elevation_card">2dp</dimen>
+    <dimen name="elevation_card_clickable">4dp</dimen>
+    <dimen name="elevation_dialog">6dp</dimen>
+
+</resources>

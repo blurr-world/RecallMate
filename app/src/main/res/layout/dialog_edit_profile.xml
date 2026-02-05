@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:boxCornerRadiusBottomEnd="@dimen/radius_text_input"
+        app:boxCornerRadiusBottomStart="@dimen/radius_text_input"
+        app:boxCornerRadiusTopEnd="@dimen/radius_text_input"
+        app:boxCornerRadiusTopStart="@dimen/radius_text_input"
+        android:hint="Name"
+        app:boxBackgroundColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:enabled="false"
+        android:layout_marginTop="8dp"
+        app:boxCornerRadiusBottomEnd="@dimen/radius_text_input"
+        app:boxCornerRadiusBottomStart="@dimen/radius_text_input"
+        app:boxCornerRadiusTopEnd="@dimen/radius_text_input"
+        app:boxCornerRadiusTopStart="@dimen/radius_text_input"
+        android:hint="Email"
+        app:boxBackgroundColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditProfileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

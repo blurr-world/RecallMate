@@ -1,0 +1,40 @@
+<resources>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="brand_primary">#636AE8</color>
+    <color name="brand_secondary">#AEB2F6</color>
+
+    <!-- Text -->
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#4B5563</color>
+    <color name="text_muted">#9CA3AF</color>
+
+    <!-- Icons -->
+    <color name="icon_primary">#111827</color>
+    <color name="icon_secondary">#6B7280</color>
+    <color name="icon_disabled">#D1D5DB</color>
+
+    <!-- Surfaces -->
+    <color name="surface_background">#FFFFFF</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="divider">#E5E7EB</color>
+
+<!--    Button background / FAB → brand_primary-->
+
+<!--    Button text → @android:color/white-->
+
+<!--    Toolbar title → text_primary-->
+
+<!--    Normal text → text_secondary-->
+
+<!--    Timestamp → text_muted-->
+
+<!--    Icons in toolbar → icon_primary-->
+
+<!--    Icons in list → icon_secondary-->
+
+<!--    Divider → divider-->
+
+</resources>

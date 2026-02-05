@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        app:strokeWidth="0dp"
+        android:id="@+id/cvSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/radius_card"
+        android:layout_marginHorizontal="24dp"
+        app:cardElevation="@dimen/elevation_card"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:padding="22dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+<!--            <ImageView-->
+<!--                android:contentDescription="@string/txt_image_profile"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:src="@android:drawable/btn_star" />-->
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodyLarge"
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_gravity="center"
+                android:text="@string/txt_welcome_back"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:id="@+id/subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAlignment="center"
+                android:layout_marginHorizontal="30dp"
+                android:layout_gravity="center"
+                android:text="@string/txt_sign_in_message"
+                android:textSize="14sp" />
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/txt_email"
+                android:textSize="14sp"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="4dp"
+                app:hintEnabled="false"
+                app:startIconDrawable="@drawable/ic_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmailSignIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/txt_dummy_email" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/txt_password"
+                android:textSize="14sp"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="4dp"
+                app:hintEnabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_lock"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassSignIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/txt_password_hint"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtResetPassSignIn"
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:textColor="#0000FF"
+                android:text="@string/txt_sign_in_reset_pass"
+                android:textSize="14sp"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:iconGravity="textStart"
+                app:iconSize="20dp"
+                app:iconPadding="12dp"
+                app:cornerRadius="@dimen/radius_button"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/txt_login"
+                app:backgroundTint="@color/brand_primary" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:id="@+id/txtSignUnLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="@string/txt_sign_in_have_no_account"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

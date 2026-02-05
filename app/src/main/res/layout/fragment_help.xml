@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".settings.ui.HelpFragment">
+
+   <com.google.android.material.appbar.MaterialToolbar
+       app:layout_constraintTop_toTopOf="parent"
+       app:title="Help"
+       app:titleTextAppearance="@style/Material.Toolbar.Title.Bold"
+       app:titleCentered="true"
+       app:navigationIcon="@drawable/ic_arrow_back"
+       android:id="@+id/mtbHelp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdHelpIgnore1"
+        app:layout_constraintTop_toBottomOf="@id/mtbHelp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:dividerColor="@color/divider"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/mdHelpIgnore1"
+        app:layout_constraintBottom_toTopOf="@id/llHelpNeedHelp"
+        android:id="@+id/rvHelpFaq"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="false"
+        android:layout_height="0dp"/>
+
+    <LinearLayout
+        android:padding="16sp"
+        android:id="@+id/llHelpNeedHelp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:text="Need More Help?"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHelpEmail"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            app:strokeWidth="0dp"
+            android:layout_marginTop="16dp"
+            app:cornerRadius="@dimen/radius_button"
+            android:text="Email Support"
+            app:icon="@drawable/ic_mail"
+            android:textColor="@color/black"
+            app:iconTint="@color/brand_primary"
+            android:elevation="@dimen/elevation_card"
+            app:backgroundTint="@color/white"
+            app:iconGravity="textStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHelpPhone"
+            android:elevation="@dimen/elevation_card"
+            app:iconTint="@color/brand_primary"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            app:strokeWidth="0dp"
+            app:backgroundTint="@color/white"
+            android:layout_marginTop="8dp"
+            app:cornerRadius="@dimen/radius_button"
+            app:icon="@drawable/ic_phone"
+            app:iconGravity="textStart"
+            android:text="Call Support"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

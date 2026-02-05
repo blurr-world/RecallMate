@@ -1,0 +1,77 @@
+package com.madinaappstudio.recallmate.core.utils
+
+import android.content.ContentResolver
+import android.content.Context
+import android.net.Uri
+import android.provider.OpenableColumns
+import android.util.Log
+import android.view.View
+import android.widget.Toast
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.progressindicator.CircularProgressIndicator
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+
+fun setLog(tag: String = "StudyAssistant-Log" ,any: Any?) {
+    Log.d(tag, "setLog: $any")
+}
+
+fun showToast(context: Context, any: Any?, duration: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(context, "${any}", duration).show()
+}
+
+fun formatDate(millis: Long, isOnlyDate: Boolean = true): String {
+    val formatter = if(isOnlyDate)
+        DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    else
+        DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")
+
+    val dateTime = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault())
+        .format(formatter)
+    return dateTime
+}
+
+fun getFileName(context: Context, uri: Uri): String? {
+    if (uri.scheme == ContentResolver.SCHEME_CONTENT) {
+        context.contentResolver.query(
+            uri,
+            null,
+            null,
+            null,
+            null
+        )?.use { cursor ->
+            val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+            if (nameIndex != -1 && cursor.moveToFirst()) {
+                return cursor.getString(nameIndex)
+            }
+        }
+    }
+    return uri.path?.substringAfterLast('/')
+}
+
+fun MaterialButton.setLoading(
+    isLoading: Boolean,
+    defaultText: String,
+    loadingText: String,
+    fullView: View?
+) {
+    if (isLoading) {
+        fullView?.alpha = .7f
+        isEnabled = false
+        text = loadingText
+        val indicator = CircularProgressIndicator(context).apply {
+            isIndeterminate = true
+            trackThickness = 16
+            setIndicatorColor(currentTextColor)
+            trackColor = currentTextColor and 0x66FFFFFF
+        }
+
+        icon = indicator.indeterminateDrawable
+    } else {
+        fullView?.alpha = 1f
+        isEnabled = true
+        text = defaultText
+        icon = null
+    }
+}

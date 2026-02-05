@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="8dp"
+    android:layout_width="82dp"
+    android:layout_height="82dp">
+
+    <com.google.android.material.card.MaterialCardView
+        app:cardCornerRadius="0dp"
+        app:strokeWidth="0dp"
+        android:id="@+id/cvItemSettingsProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardForegroundColor="@android:color/transparent"
+        app:cardBackgroundColor="@android:color/transparent"
+        android:layout_gravity="center"
+        android:layout_width="82dp"
+        android:layout_height="82dp">
+
+        <ImageView
+            android:id="@+id/imgItemSettingsProfile"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/imgItemSettingsSelected"
+        android:src="@drawable/ic_check_small"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        app:tint="@color/brand_primary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

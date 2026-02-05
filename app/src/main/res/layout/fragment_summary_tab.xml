@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSummaryLibrary"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/llSummaryLibEmpty"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_marginHorizontal="24dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:contentDescription="@string/txt_image_empty_summary"
+            android:src="@drawable/ic_add"
+            android:layout_width="62dp"
+            android:layout_height="62dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_marginTop="8dp"
+            android:textSize="19sp"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:text="@string/txt_no_summaries_yet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            style="@style/TextAppearance.Material3.BodySmall"
+            android:textSize="16sp"
+            android:text="@string/txt_summary_tab_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_dash_upload_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/pbSummaryTab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvResetPass"
+        android:visibility="visible"
+        app:strokeWidth="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/radius_card"
+        android:layout_marginHorizontal="24dp"
+        app:cardElevation="@dimen/elevation_card"
+        app:cardBackgroundColor="@color/surface_card"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:padding="22dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBackResetPass"
+                android:textColor="@color/text_primary"
+                app:iconTint="@color/text_primary"
+                app:icon="@drawable/ic_arrow_back"
+                android:layout_width="wrap_content"
+                android:text="@string/txt_back"
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+                android:layout_height="wrap_content"/>
+
+<!--            <ImageView-->
+<!--                android:contentDescription="@string/txt_image_profile"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:src="@android:drawable/btn_star" />-->
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodyLarge"
+                android:id="@+id/title"
+                android:textColor="@color/text_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_gravity="center"
+                android:text="@string/txt_reset_password"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:id="@+id/subtitle"
+                android:textColor="@color/text_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAlignment="center"
+                android:layout_marginHorizontal="30dp"
+                android:layout_gravity="center"
+                android:text="@string/txt_reset_pass_message"
+                android:textSize="14sp" />
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/txt_email"
+                android:textSize="14sp"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="4dp"
+                app:hintEnabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_mail"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmailResetPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/txt_dummy_email" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendResetLink"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="35dp"
+                app:cornerRadius="@dimen/radius_button"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:iconGravity="textStart"
+                app:iconSize="20dp"
+                app:iconPadding="12dp"
+                app:backgroundTint="@color/brand_primary"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/txt_send_reset_link" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:visibility="gone"
+        app:strokeWidth="0dp"
+        android:id="@+id/cvResetPassResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/radius_card"
+        android:layout_marginHorizontal="24dp"
+        app:cardElevation="@dimen/elevation_card"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:padding="22dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:contentDescription="@string/txt_image_success"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_check"
+                app:tint="@android:color/holo_green_dark" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodyLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_gravity="center"
+                android:text="@string/txt_check_inbox"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.BodyMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:textAlignment="center"
+                android:layout_marginHorizontal="30dp"
+                android:layout_gravity="center"
+                android:text="@string/txt_reset_pass_success_message"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBackToSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="35dp"
+                app:cornerRadius="@dimen/radius_button"
+                android:backgroundTint="@color/brand_primary"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/txt_back_to_sign_in"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

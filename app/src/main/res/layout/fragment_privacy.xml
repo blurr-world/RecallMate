@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".settings.ui.PrivacyFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/mtbPrivacyPolicy"
+        app:title="@string/txt_privacy_policy"
+        app:titleCentered="true"
+        app:navigationIconTint="@color/icon_primary"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:titleTextAppearance="@style/Material.Toolbar.Title.Bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        app:dividerColor="@color/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="Last updated: January 1, 2026"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_muted"
+                android:layout_marginHorizontal="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="Introduction"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@string/txt_privacy_intro"
+                android:textSize="16sp"
+                android:lineHeight="22dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="Information We Collect"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/text_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@string/txt_privacy_info_collect"
+                android:textSize="16sp"
+                android:lineHeight="22dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="How We Use Your Information"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/text_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@string/txt_privacy_info_use"
+                android:textSize="16sp"
+                android:lineHeight="22dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="Disclosure of Your Information"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/text_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@string/txt_privacy_disclosure"
+                android:lineHeight="22dp"
+                android:textSize="16sp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="Security of Your Information"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/text_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@string/txt_privacy_security"
+                android:textSize="16sp"
+                android:lineHeight="22dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="Changes to This Privacy Policy"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/text_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@string/txt_privacy_changes"
+                android:textSize="16sp"
+                android:lineHeight="22dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

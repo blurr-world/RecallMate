@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/ic_home"
+        android:id="@+id/dashboardFragment"
+        android:title="@string/txt_dashboard"/>
+
+    <item
+        android:icon="@drawable/ic_upload"
+        android:id="@+id/uploadFragment"
+        android:title="@string/txt_upload"/>
+
+<!--    <item-->
+<!--        android:icon="@drawable/ic_chat"-->
+<!--        android:id="@+id/graphChatFragment"-->
+<!--        android:title="Chat"/>-->
+
+    <item
+        android:icon="@drawable/ic_library"
+        android:id="@+id/libraryFragment"
+        android:title="@string/txt_library"/>
+
+    <item
+        android:icon="@drawable/ic_settings"
+        android:id="@+id/settingsFragment"
+        android:title="@string/txt_settings"/>
+
+</menu>

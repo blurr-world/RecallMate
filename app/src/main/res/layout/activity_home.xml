@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.HomeActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/homeNavHost"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:navGraph="@navigation/graph_home"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:layout_constraintBottom_toTopOf="@id/mdHomeIgnore"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.divider.MaterialDivider
+        app:dividerColor="@color/divider"
+        android:id="@+id/mdHomeIgnore"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavHome"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:foregroundTint="@null"
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemTextColor="@color/bottom_nav_selector"
+        android:id="@+id/bottomNavHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_bottom"
+        app:elevation="2dp"
+        app:backgroundTint="@color/white"
+        app:itemActiveIndicatorStyle="@android:color/transparent"
+        android:layout_gravity="bottom"
+        app:labelVisibilityMode="labeled"
+        app:itemRippleColor="@null"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

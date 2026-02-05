@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        app:navigationIcon="@drawable/ic_arrow_back"
+        android:id="@+id/mtbUpload"
+        app:title="Create Your Study Stack"
+        app:titleCentered="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextAppearance="@style/Material.Toolbar.Title.Bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdUpload"
+        app:layout_constraintTop_toBottomOf="@id/mtbUpload"
+        app:dividerColor="@color/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <ScrollView
+        android:id="@+id/svUploadMain"
+        app:layout_constraintTop_toBottomOf="@id/mdUpload"
+        app:layout_constraintBottom_toTopOf="@id/llUploadBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:paddingTop="16dp"
+                android:paddingHorizontal="16dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/txt_upload_message_1"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:drawableStart="@drawable/ic_check_small"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/txt_smart_summary"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
+                    app:drawableTint="@color/icon_secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:drawableStart="@drawable/ic_check_small"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/txt_exam_ready_flashcards"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
+                    app:drawableTint="@color/icon_secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingBottom="8dp"
+                android:id="@+id/llUploadMain"
+                android:clipToPadding="false"
+                android:paddingHorizontal="16dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/btnUploadToggleGroup"
+                    app:selectionRequired="true"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    app:singleSelection="true"
+                    app:checkedButton="@id/btnUploadOptionUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.button.MaterialButton
+                        app:cornerRadius="@dimen/radius_button"
+                        app:icon="@drawable/ic_upload"
+                        android:id="@+id/btnUploadOptionUpload"
+                        android:text="Upload File"
+                        app:iconGravity="textStart"
+                        style="@style/ToggleButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnUploadOptionPaste"
+                        app:icon="@drawable/ic_paste_text"
+                        app:iconGravity="textStart"
+                        app:cornerRadius="@dimen/radius_button"
+                        android:text="Paste Text"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        style="@style/ToggleButtonStyle"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_marginTop="16dp"
+                    app:strokeWidth="0dp"
+                    android:visibility="visible"
+                    android:id="@+id/cvUploadDoc"
+                    app:cardElevation="@dimen/elevation_card"
+                    app:cardCornerRadius="@dimen/radius_card"
+                    app:cardBackgroundColor="#fafafb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_margin="2dp"
+                        android:padding="40dp"
+                        android:background="@drawable/bg_dashed_upload"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:contentDescription="@string/txt_image_upload"
+                            android:src="@drawable/ic_upload"
+                            android:layout_gravity="center"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            app:tint="@color/brand_primary" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtUploadFileName"
+                            android:layout_marginTop="16dp"
+                            android:textAlignment="center"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:text="@string/txt_upload_choose_file"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_marginTop="16dp"
+                            android:textAlignment="center"
+                            android:textColor="@color/text_secondary"
+                            style="@style/TextAppearance.Material3.BodySmall"
+                            android:text="@string/txt_upload_supported_files"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:visibility="gone"
+                    android:id="@+id/ilUploadPasteText"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="1000"
+                    app:boxStrokeColor="@color/brand_primary"
+                    android:layout_marginTop="16dp"
+                    app:hintEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUploadPasteText"
+                        android:minHeight="200dp"
+                        android:inputType="text"
+                        android:hint="Paste your content here."
+                        android:gravity="top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="@color/divider"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnUploadCustomize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="start|center_vertical"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Customize Output (Optional)"
+                    android:textColor="@color/black"
+                    android:drawableStart="@drawable/ic_settings"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:drawablePadding="12dp"
+                    android:textAlignment="viewStart"
+                    style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/llUploadCustomizeMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:text="Summary Settings"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_marginTop="12dp"
+                        android:text="Summary Title"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_marginTop="8dp"
+                        app:hintEnabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etUploadSummaryTitle"
+                            android:layout_width="match_parent"
+                            android:inputType="text"
+                            android:hint="e.g. Key components of Internet."
+                            android:layout_height="wrap_content"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_marginTop="12dp"
+                        android:text="Summary Length"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/cgUploadSummaryLength"
+                        android:layout_marginTop="8dp"
+                        app:singleSelection="true"
+                        app:selectionRequired="true"
+                        app:checkedChip="@id/chipUploadSummaryMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipUploadSummaryShort"
+                            app:chipCornerRadius="@dimen/radius_button"
+                            android:text="Short"
+                            app:chipBackgroundColor="@color/upload_summary_chip_bg_selector"
+                            android:textColor="@color/upload_summary_chip_text_selector"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <com.google.android.material.chip.Chip
+                            app:chipBackgroundColor="@color/upload_summary_chip_bg_selector"
+                            android:textColor="@color/upload_summary_chip_text_selector"
+                            android:id="@+id/chipUploadSummaryMedium"
+                            android:text="Medium"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            app:chipCornerRadius="@dimen/radius_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <com.google.android.material.chip.Chip
+                            app:chipBackgroundColor="@color/upload_summary_chip_bg_selector"
+                            android:textColor="@color/upload_summary_chip_text_selector"
+                            android:id="@+id/chipUploadSummaryDetailed"
+                            android:text="Detailed"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            app:chipCornerRadius="@dimen/radius_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_marginTop="12dp"
+                        android:text="Audience Level"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        app:boxStrokeColor="@color/brand_primary"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_marginTop="8dp"
+                        app:hintEnabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:id="@+id/aTxtUploadAudienceLevel"
+                            android:inputType="none"
+                            android:text="Intermediate"
+                            android:layout_height="wrap_content"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_marginTop="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        app:dividerColor="@color/divider"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_marginTop="16dp"
+                        android:text="Flashcard Settings"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/msUploadFlashcardSettings"
+                        android:layout_marginTop="12dp"
+                        android:text="Generate Flashcards"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:id="@+id/llUploadFlashcardMain"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:text="Flashcard Title"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_marginTop="8dp"
+                            app:hintEnabled="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etUploadFlashcardTitle"
+                                android:layout_width="match_parent"
+                                android:inputType="text"
+                                android:hint="e.g. Key components of Internet."
+                                android:layout_height="wrap_content"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtUploadFlashcardCount"
+                            android:layout_marginTop="8dp"
+                            android:text="Flashcard: 5"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <com.google.android.material.slider.Slider
+                            android:id="@+id/sliderUploadFlashcard"
+                            android:valueFrom="1"
+                            android:stepSize="1"
+                            android:valueTo="10"
+                            app:thumbHeight="32dp"
+                            android:value="5"
+                            app:thumbColor="@color/brand_primary"
+                            app:trackColorActive="@color/brand_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_marginBottom="8dp"
+        android:id="@+id/llUploadBottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:dividerColor="@color/divider"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="32dp"
+            android:id="@+id/btnUploadCreateStack"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/brand_primary"
+            android:text="@string/txt_dash_create_stack"
+            android:layout_width="match_parent"
+            app:cornerRadius="@dimen/radius_button"
+            app:iconPadding="10dp"
+            app:iconSize="20dp"
+            app:iconGravity="textStart"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:text="@string/txt_upload_completion_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
