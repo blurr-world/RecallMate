@@ -21,7 +21,9 @@ import com.madinaappstudio.recallmate.BuildConfig
 import com.madinaappstudio.recallmate.core.api.GeminiFileUploader
 import com.madinaappstudio.recallmate.core.api.GeminiUploadCallback
 import com.madinaappstudio.recallmate.core.models.ChatModel
+import com.madinaappstudio.recallmate.core.utils.NetworkLiveData
 import com.madinaappstudio.recallmate.core.utils.getFileName
+import com.madinaappstudio.recallmate.core.utils.showNoInternet
 import com.madinaappstudio.recallmate.core.utils.showToast
 import com.madinaappstudio.recallmate.databinding.FragmentChatBinding
 import kotlinx.coroutines.launch
@@ -34,10 +36,13 @@ class ChatFragment : Fragment() {
     private lateinit var chat: Chat
     private var uploadedGeminiFile: Pair<String, String>? = null
     private var pendingFile: Pair<String, String>? = null
+    private lateinit var fileUri: Uri
+    var hasConnection = false
 
     private val pickFile =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
             if (uri != null && uploadedGeminiFile == null && pendingFile == null) {
+                fileUri = uri
                 handleFile(uri)
             }
         }
@@ -58,6 +63,10 @@ class ChatFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        NetworkLiveData(requireContext()).observe(viewLifecycleOwner) {
+            hasConnection = it
+        }
+
         setupRecyclerView()
 
         val model = GenerativeModel("gemini-2.5-flash", BuildConfig.GEMINI_API_KEY)
@@ -72,21 +81,30 @@ class ChatFragment : Fragment() {
         })
 
         binding.btnChatSendMessage.setOnClickListener {
-            if (!canSend()) return@setOnClickListener
+            if (hasConnection) {
+                if (!canSend()) return@setOnClickListener
 
-            val text = binding.etChatMessage.text.toString()
-            binding.etChatMessage.text?.clear()
+                val text = binding.etChatMessage.text.toString()
+                binding.etChatMessage.text?.clear()
 
-            chatAdapter.add(ChatModel(text = text, isUser = true, isTyping = false))
-            chatAdapter.add(ChatModel(text = "Typing...", isUser = false, isTyping = true))
-            binding.rvChatMain.scrollToPosition(chatAdapter.itemCount - 1)
+                chatAdapter.add(ChatModel(text = text, isUser = true, isTyping = false))
+                chatAdapter.add(ChatModel(text = "Typing...", isUser = false, isTyping = true))
+                binding.rvChatMain.scrollToPosition(chatAdapter.itemCount - 1)
 
-            sendMessage(text)
+                sendMessage(text)
+            } else {
+                showNoInternet(requireContext(), binding.root)
+            }
+
         }
 
         binding.ilChatMain.setStartIconOnClickListener {
-            if (uploadedGeminiFile == null && pendingFile == null) {
-                pickFile.launch(arrayOf("application/pdf"))
+            if (hasConnection) {
+                if (uploadedGeminiFile == null && pendingFile == null) {
+                    pickFile.launch(arrayOf("application/pdf"))
+                }
+            } else {
+                showNoInternet(requireContext(), binding.root)
             }
         }
 
@@ -149,6 +167,8 @@ class ChatFragment : Fragment() {
 
             uploadedGeminiFile = pendingFile
             pendingFile = null
+
+            chatAdapter.add(ChatModel(text = getFileName(requireContext(), fileUri), isUser = true, isTyping = false))
 
             binding.llChatFileName.visibility = View.GONE
             binding.ilChatMain.setStartIconOnClickListener(null)

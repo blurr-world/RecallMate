@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.madinaappstudio.recallmate.R
 import com.madinaappstudio.recallmate.upload.model.UploadResultItem
+import io.noties.markwon.Markwon
+import io.noties.markwon.MarkwonPlugin
+import io.noties.markwon.movement.MovementMethodPlugin
 
 class UploadResultAdapter(
     private val items: List<UploadResultItem>
@@ -64,8 +67,14 @@ class UploadResultAdapter(
     class DividerVH(view: View) : RecyclerView.ViewHolder(view)
 
     class SummaryVH(view: View) : RecyclerView.ViewHolder(view) {
+        val markwon = Markwon.builder(itemView.context)
+            .usePlugin(MovementMethodPlugin.link())
+            .build()
         fun bind(item: UploadResultItem.Summary) {
-            itemView.findViewById<MaterialTextView>(R.id.txtResultSummary).text = item.text
+            markwon.setMarkdown(
+                itemView.findViewById<MaterialTextView>(R.id.txtResultSummary),
+                item.text
+            )
         }
     }
 

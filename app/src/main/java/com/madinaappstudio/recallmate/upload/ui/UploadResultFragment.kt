@@ -29,6 +29,7 @@ import com.madinaappstudio.recallmate.upload.model.AiResponseModel
 import com.madinaappstudio.recallmate.upload.model.UploadResultItem
 import com.madinaappstudio.recallmate.upload.ui.adapter.UploadResultAdapter
 import com.madinaappstudio.recallmate.upload.viewmodel.UploadViewModel
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 class UploadResultFragment : Fragment() {
@@ -82,6 +83,7 @@ class UploadResultFragment : Fragment() {
                         is SummaryUiEvent.Success ->
                             showToast(requireContext(), event.message)
                     }
+                    handleLoading(false)
                 }
             }
         }
@@ -96,12 +98,12 @@ class UploadResultFragment : Fragment() {
                         is FlashcardUiEvent.Success ->
                             showToast(requireContext(), event.message)
                     }
+                    handleLoading(false)
                 }
             }
         }
 
         binding.btnUploadResultSave.setOnClickListener {
-            handleLoading(true)
             saveToLibrary()
         }
 
@@ -141,6 +143,7 @@ class UploadResultFragment : Fragment() {
     }
 
     private fun saveToLibrary() {
+        handleLoading(true)
         val summaryModel = SummaryModel(
             title = aiResponseModel.summary.summaryTitle,
             summary = aiResponseModel.summary.summary,
@@ -167,6 +170,5 @@ class UploadResultFragment : Fragment() {
                 flashcardModel.toList()
             )
         }
-        handleLoading(false)
     }
 }

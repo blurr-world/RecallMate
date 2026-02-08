@@ -21,6 +21,8 @@ import com.madinaappstudio.recallmate.summary.repository.SummaryRepository
 import com.madinaappstudio.recallmate.summary.viewmodel.SummaryUiEvent
 import com.madinaappstudio.recallmate.summary.viewmodel.SummaryViewModel
 import com.madinaappstudio.recallmate.summary.viewmodel.SummaryViewModelFactory
+import io.noties.markwon.Markwon
+import io.noties.markwon.movement.MovementMethodPlugin
 import kotlinx.coroutines.launch
 import kotlin.getValue
 
@@ -89,10 +91,13 @@ class SummaryDetailsFragment : Fragment() {
     }
 
     private fun bindViews(summary: SummaryModel) {
+        val markwon = Markwon.builder(requireContext())
+            .usePlugin(MovementMethodPlugin.link())
+            .build()
         binding.txtSummaryDetailsTitle.text = summary.title
         binding.txtSummaryDetailsDate.text = formatDate(summary.timestamp)
         binding.txtSummaryDetailsSource.text = summary.sourceTitle
-        binding.txtSummaryDetailsSummary.text = summary.summary
+        markwon.setMarkdown(binding.txtSummaryDetailsSummary, summary.summary)
     }
 
     override fun onDestroyView() {

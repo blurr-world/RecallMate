@@ -26,8 +26,7 @@ object GeminiFileUploader {
     ) {
         val fileBytes = uriToByteArray(context, uri)
             ?: run {
-                callback.onError("Failed to read file")
-                showToast(context, "File is too large")
+                callback.onError("File is too large")
                 return
             }
 

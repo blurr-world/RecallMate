@@ -1,7 +1,9 @@
 package com.madinaappstudio.recallmate.upload.ui
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,14 +20,17 @@ import com.google.ai.client.generativeai.type.FileDataPart
 import com.google.ai.client.generativeai.type.content
 import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.madinaappstudio.recallmate.BuildConfig
 import com.madinaappstudio.recallmate.R
 import com.madinaappstudio.recallmate.core.api.GeminiFileUploader
 import com.madinaappstudio.recallmate.core.api.GeminiUploadCallback
+import com.madinaappstudio.recallmate.core.utils.NetworkLiveData
 import com.madinaappstudio.recallmate.core.utils.getFileName
 import com.madinaappstudio.recallmate.core.utils.setLoading
 import com.madinaappstudio.recallmate.core.utils.setLog
+import com.madinaappstudio.recallmate.core.utils.showNoInternet
 import com.madinaappstudio.recallmate.core.utils.showToast
 import com.madinaappstudio.recallmate.databinding.FragmentUploadBinding
 import com.madinaappstudio.recallmate.upload.model.UploadConfiguration
@@ -44,11 +49,17 @@ class UploadFragment : Fragment() {
     private var selectedFileName = ""
     private var isFlashcardGenerate = false
     private var uploadConfiguration = UploadConfiguration()
-    private var currentUploadMode = 0
+    private var currentUploadMode = R.id.btnUploadOptionUpload
+    private var isRevertingSelection = false
+    private var isUploading = false
+    private var isGenerating = false
+
     val model = GenerativeModel(
         "gemini-2.5-flash",
         BuildConfig.GEMINI_API_KEY
     )
+
+    var hasConnection = false
 
     private val filePicker =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) {
@@ -74,48 +85,86 @@ class UploadFragment : Fragment() {
         }
 
         binding.cvUploadDoc.setOnClickListener {
-            filePicker.launch(arrayOf("application/pdf", "application/docs"))
+            if (!isUploading ) {
+                if (!isGenerating) {
+                    if (hasConnection) {
+                        filePicker.launch(arrayOf("application/pdf", "application/docs"))
+                    } else {
+                        showNoInternet(requireContext(), binding.root)
+                    }
+                } else {
+                    showToast(requireContext(), "You cannot select new file while generating stack.")
+                }
+            } else {
+                showToast(requireContext(), "Please wait file is uploading...")
+            }
         }
 
-//        binding.cgUploadSummaryLength.check(R.id.chipUploadSummaryMedium)
+        NetworkLiveData(requireContext()).observe(viewLifecycleOwner) {
+            hasConnection = it
+            if (it) {
+                binding.btnUploadCreateStack.alpha = 1F
+            } else {
+                binding.btnUploadCreateStack.alpha = 0.5F
+            }
+        }
 
         binding.btnUploadCreateStack.setOnClickListener {
-            if (currentUploadMode == 0) {
-                uriMimePair?.let { (uri, mimeType) ->
-                    handleLoading(true)
-                    saveConfiguration()
-                    generateContent(uri, mimeType, true)
-                } ?: selectFileToast()
-            } else {
-                val text = binding.etUploadPasteText.text.toString()
-                if (text.isNotEmpty()) {
-                    handleLoading(true)
-                    generateContent(text, "", false)
+            if (hasConnection) {
+                if (currentUploadMode == R.id.btnUploadOptionUpload) {
+                    uriMimePair?.let { (uri, mimeType) ->
+                        handleLoading(true)
+                        saveConfiguration()
+                        generateContent(uri, mimeType, true)
+                    } ?: selectFileToast()
                 } else {
-                    showToast(requireContext(), "Please enter something")
-                }
+                    val text = binding.etUploadPasteText.text.toString()
+                    if (text.isNotEmpty()) {
+                        handleLoading(true)
+                        generateContent(text, "", false)
+                    } else {
+                        showToast(requireContext(), "Please enter something")
+                    }
 
+                }
+            } else {
+                showNoInternet(requireContext(), binding.root)
             }
         }
 
         setupAudienceDropDown()
 
         binding.btnUploadToggleGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
-            if (!isChecked) return@addOnButtonCheckedListener
+
+            if (isRevertingSelection || !isChecked) return@addOnButtonCheckedListener
+
+            if (isGenerating) {
+                showToast(requireContext(), "Please wait, stack is generating…")
+
+                isRevertingSelection = true
+                group.check(currentUploadMode)
+                isRevertingSelection = false
+
+                return@addOnButtonCheckedListener
+            }
+
+            if (checkedId == currentUploadMode) return@addOnButtonCheckedListener
 
             when (checkedId) {
                 R.id.btnUploadOptionUpload -> {
-                    currentUploadMode = 0
+                    currentUploadMode = checkedId
                     resetField(true)
                     changeOptionViews(true)
                 }
+
                 R.id.btnUploadOptionPaste -> {
-                    currentUploadMode = 1
+                    currentUploadMode = checkedId
                     resetField(false)
                     changeOptionViews(false)
                 }
             }
         }
+
 
         binding.btnUploadCustomize.setOnClickListener {
             showCustomizeView()
@@ -194,6 +243,7 @@ class UploadFragment : Fragment() {
     }
 
     private fun handleFile(uri: Uri) {
+        isUploading = true
         GeminiFileUploader.upload(requireContext(), uri, object : GeminiUploadCallback{
             override fun onSuccess(fileUri: String, mimeType: String) {
                 uriMimePair = Pair(fileUri, mimeType)
@@ -202,11 +252,12 @@ class UploadFragment : Fragment() {
                         binding.txtUploadFileName.text = selectedFileName
                     }
                 }
+                isUploading = false
             }
 
             override fun onError(message: String) {
-                showToast(requireContext(), "Failed to upload file.")
-                setLog(any = message)
+                isUploading = false
+                showToast(requireContext(), message)
             }
 
         })
@@ -214,6 +265,7 @@ class UploadFragment : Fragment() {
 
 
     private fun generateContent(uri: String, mimeType: String, isFile: Boolean) {
+        isGenerating = true
         val prompt = if (isFile) content {
             text(buildPrompt(uploadConfiguration))
             part(
@@ -227,8 +279,6 @@ class UploadFragment : Fragment() {
             text(uri)
         }
 
-        setLog(any = prompt)
-
         lifecycleScope.launch {
             try {
                 val response = model.generateContent(prompt)
@@ -240,7 +290,7 @@ class UploadFragment : Fragment() {
                         summary = AiResponseModel.Summary(
                             summaryTitle = ai.summary.summaryTitle,
                             summary = ai.summary.summary,
-                            sourceTitle = if (currentUploadMode == 0) selectedFileName else "Generated from text",
+                            sourceTitle = if (currentUploadMode == R.id.btnUploadOptionUpload) selectedFileName else "Generated from text",
                             summaryLength = uploadConfiguration.summaryLength,
                             summaryAudienceLevel = uploadConfiguration.summaryAudienceLevel
                         ),
@@ -249,7 +299,6 @@ class UploadFragment : Fragment() {
                         } else null,
                         mcq = null
                     )
-                    setLog(any = finalResponse)
                     uploadViewModel.setUploadResponse(finalResponse)
                 } else {
                     uploadViewModel.setUploadResponse(null)
@@ -259,7 +308,6 @@ class UploadFragment : Fragment() {
                 setLog(any = e)
             } finally {
                 handleLoading(false)
-                setLog(any = uploadConfiguration)
                 findNavController().navigate(R.id.action_upload_to_result)
             }
         }

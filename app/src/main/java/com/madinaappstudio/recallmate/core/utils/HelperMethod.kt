@@ -2,13 +2,17 @@ package com.madinaappstudio.recallmate.core.utils
 
 import android.content.ContentResolver
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.provider.OpenableColumns
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.CircularProgressIndicator
+import com.google.android.material.snackbar.Snackbar
+import com.madinaappstudio.recallmate.R
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -32,7 +36,7 @@ fun formatDate(millis: Long, isOnlyDate: Boolean = true): String {
     return dateTime
 }
 
-fun getFileName(context: Context, uri: Uri): String? {
+fun getFileName(context: Context, uri: Uri): String {
     if (uri.scheme == ContentResolver.SCHEME_CONTENT) {
         context.contentResolver.query(
             uri,
@@ -47,7 +51,21 @@ fun getFileName(context: Context, uri: Uri): String? {
             }
         }
     }
-    return uri.path?.substringAfterLast('/')
+    return uri.path?.substringAfterLast('/') ?: "Unknown File"
+}
+
+fun showNoInternet(context: Context, view: View) {
+    Snackbar.make(
+        view,
+        "No internet connection",
+        Snackbar.LENGTH_LONG
+    ).apply {
+        setActionTextColor(context.resources.getColor(R.color.brand_primary, null))
+        setAction("Open Settings") {
+            val intent = Intent(Settings.ACTION_NETWORK_OPERATOR_SETTINGS)
+            context.startActivity(intent)
+        }
+    }.show()
 }
 
 fun MaterialButton.setLoading(
