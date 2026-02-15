@@ -20,6 +20,8 @@
     <string name="txt_library">Library</string>
     <string name="txt_my_library">My Library</string>
     <string name="txt_dash_lib_message">Access your organized summaries and flashcard decks in one place.</string>
+    <string name="txt_dash_generate_mcq">Generate MCQ</string>
+    <string name="txt_dash_mcq_message">Create custom multiple-choice questions to test your knowledge and prepare for exams.</string>
     <string name="txt_previous">Previous</string>
     <string name="txt_mark_completion">Mark as Completed</string>
     <string name="txt_image_empty_flashcard_set">Image Empty FlashcardSet</string>

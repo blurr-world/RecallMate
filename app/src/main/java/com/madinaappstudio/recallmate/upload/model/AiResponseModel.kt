@@ -3,7 +3,6 @@ package com.madinaappstudio.recallmate.upload.model
 data class AiResponseModel(
     var summary: Summary,
     var flashcards: Flashcards?,
-    var mcq: MCQ?
 ) {
     data class Summary(
         var summaryTitle: String,
@@ -21,13 +20,4 @@ data class AiResponseModel(
             var answer: String
         )
     }
-
-    data class MCQ(
-        var question: String,
-        var firstOption: String,
-        var secondOption: String,
-        var thirdOption: String,
-        var fourthOption: String,
-        var correctOption: String
-    )
 }

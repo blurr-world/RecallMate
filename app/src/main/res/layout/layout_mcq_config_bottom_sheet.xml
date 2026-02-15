@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/popup_bg">
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        app:dividerColor="@color/divider"
+        app:dividerThickness="4dp"
+        style="@style/Widget.Material3.BottomSheet.DragHandle"
+        android:id="@+id/mdBottomSheetHandle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Quiz Settings"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Difficulty Level"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:boxStrokeColor="@color/brand_primary"
+        app:hintEnabled="false">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/aTxtMCQDifficultyBS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="Intermediate" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtMCQQuestionCountBS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Number of Questions: 5"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sliderMCQCountBS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stepSize="1"
+        android:value="10"
+        android:valueFrom="1"
+        android:valueTo="20"
+        app:thumbHeight="32dp"
+        app:thumbColor="@color/brand_primary"
+        app:trackColorActive="@color/brand_primary" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnApplyMCQConfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Apply Settings"
+        app:backgroundTint="@color/brand_primary"
+        app:cornerRadius="@dimen/radius_button" />
+
+</LinearLayout>

@@ -47,6 +47,10 @@ class DashboardFragment : Fragment() {
                 .selectedItemId = R.id.libraryFragment
         }
 
+        binding.cvQuickLinkMCQ.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboard_to_createMCQ)
+        }
+
         binding.txtGreetingDash.text = getGreeting(System.currentTimeMillis())
 
     }

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/mtbCreateMCQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="Create MCQ Quiz"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/Material.Toolbar.Title.Bold">
+
+        <ImageButton
+            android:id="@+id/btnMCQSettings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Quiz Settings"
+            android:src="@drawable/ic_settings"
+            app:tint="@color/brand_primary" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdCreateMcq"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:dividerColor="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/mtbCreateMCQ" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Summary"
+        android:paddingHorizontal="16dp"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp"
+        android:paddingVertical="8dp"
+        android:id="@+id/txtCreateMcqHeader"
+        app:layout_constraintTop_toBottomOf="@id/mdCreateMcq"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCreateMCQ"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="8dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toTopOf="@id/llCreateMCQBottom"
+        app:layout_constraintTop_toBottomOf="@id/txtCreateMcqHeader"
+        tools:listitem="@layout/item_mcq_summary_selection" />
+
+    <ProgressBar
+        android:id="@+id/pbCreateMCQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/llCreateMCQBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:dividerColor="@color/divider" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGenerateQuiz"
+            android:enabled="false"
+            android:alpha="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="4dp"
+            android:text="Generate Quiz"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/brand_primary"
+            app:cornerRadius="@dimen/radius_button"
+            app:iconGravity="textStart"
+            app:iconPadding="10dp"
+            app:iconSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Questions are generated instantly using AI."
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

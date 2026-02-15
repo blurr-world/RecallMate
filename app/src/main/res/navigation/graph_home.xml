@@ -19,6 +19,14 @@
             app:popExitAnim="@anim/slide_out_right"
             android:id="@+id/action_dashboard_to_chat"
             app:destination="@id/chatFragment"/>
+
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_dashboard_to_createMCQ"
+            app:destination="@id/createMCQFragment" />
     </fragment>
 
     <fragment
@@ -147,5 +155,25 @@
         android:name="com.madinaappstudio.recallmate.settings.ui.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/createMCQFragment"
+        android:name="com.madinaappstudio.recallmate.mcq.ui.CreateMCQFragment"
+        android:label="Create MCQ"
+        tools:layout="@layout/fragment_create_mcq" >
+        <action
+            android:id="@+id/action_createMCQFragment_to_practiceMCQFragment"
+            app:destination="@id/practiceMCQFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/practiceMCQFragment"
+        android:name="com.madinaappstudio.recallmate.mcq.ui.PracticeMCQFragment"
+        android:label="Practice MCQ"
+        tools:layout="@layout/fragment_practice_mcq">
+        <argument
+            android:name="mcqList"
+            app:argType="com.madinaappstudio.recallmate.core.models.McqModel[]" />
+    </fragment>
 
 </navigation>

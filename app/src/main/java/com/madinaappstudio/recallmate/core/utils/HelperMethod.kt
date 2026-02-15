@@ -17,12 +17,21 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-fun setLog(tag: String = "StudyAssistant-Log" ,any: Any?) {
+fun setLog(any: Any?, tag: String = "StudyAssistant-Log") {
     Log.d(tag, "setLog: $any")
 }
 
 fun showToast(context: Context, any: Any?, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(context, "${any}", duration).show()
+}
+
+fun extractJson(raw: String, isObject: Boolean = true): String {
+    val start = if (isObject) raw.indexOf('{') else raw.indexOf('[')
+    val end = if (isObject) raw.lastIndexOf('}') else raw.lastIndexOf(']')
+    require(start != -1 && end != -1 && end > start) {
+        "No valid JSON found"
+    }
+    return raw.substring(start, end + 1)
 }
 
 fun formatDate(millis: Long, isOnlyDate: Boolean = true): String {

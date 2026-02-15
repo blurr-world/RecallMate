@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/mtbPracticeMCQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="MCQ Practice"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/Material.Toolbar.Title.Bold" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdPracticeMcq"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:dividerColor="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/mtbPracticeMCQ" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/practiceView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/mdPracticeMcq"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/llPracticeProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtPracticeCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="QUESTION 3 OF 10" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtPracticePercentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/brand_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="30%" />
+            </RelativeLayout>
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/lpiPracticeMCQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:trackCornerRadius="4dp"
+                app:trackThickness="4dp" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/svPracticeContent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toTopOf="@id/llPracticeBottom"
+            app:layout_constraintTop_toBottomOf="@id/llPracticeProgress">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/radius_card"
+                    app:cardElevation="@dimen/elevation_card"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtPracticeQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="Which of the following statements best describes the cognitive benefit of active recall in learning?" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:id="@+id/llOptionsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvOptionA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        app:cardCornerRadius="@dimen/radius_card"
+                        app:cardElevation="@dimen/elevation_card_clickable"
+                        app:strokeColor="@color/divider"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="12dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtPracticeOptionLabelA"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/bg_settings_item_first"
+                                android:backgroundTint="#F5F5F5"
+                                android:gravity="center"
+                                android:text="A"
+                                android:textColor="@color/text_secondary"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtOptionA"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14sp"
+                                tools:text="Active recall improves long-term memory by strengthening neural pathways during retrieval." />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvOptionB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        app:cardCornerRadius="@dimen/radius_card"
+                        app:cardElevation="@dimen/elevation_card_clickable"
+                        app:strokeColor="@color/divider"
+                        app:strokeWidth="1dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="12dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:id="@+id/txtPracticeOptionLabelB"
+                                android:background="@drawable/bg_settings_item_first"
+                                android:backgroundTint="#F5F5F5"
+                                android:gravity="center"
+                                android:text="B"
+                                android:textColor="@color/text_secondary"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtOptionB"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14sp"
+                                tools:text="Passive reading is the most effective way to memorize complex academic concepts." />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvOptionC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        app:cardCornerRadius="@dimen/radius_card"
+                        app:cardElevation="@dimen/elevation_card_clickable"
+                        app:strokeColor="@color/divider"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="12dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="32dp"
+                                android:id="@+id/txtPracticeOptionLabelC"
+                                android:layout_height="32dp"
+                                android:background="@drawable/bg_settings_item_first"
+                                android:backgroundTint="#F5F5F5"
+                                android:gravity="center"
+                                android:text="C"
+                                android:textColor="@color/text_secondary"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtOptionC"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14sp"
+                                tools:text="Spaced repetition has no scientific basis in modern cognitive psychology." />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvOptionD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        app:cardCornerRadius="@dimen/radius_card"
+                        app:cardElevation="@dimen/elevation_card_clickable"
+                        app:strokeColor="@color/divider"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="12dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="32dp"
+                                android:id="@+id/txtPracticeOptionLabelD"
+                                android:layout_height="32dp"
+                                android:background="@drawable/bg_settings_item_first"
+                                android:backgroundTint="#F5F5F5"
+                                android:gravity="center"
+                                android:text="D"
+                                android:textColor="@color/text_secondary"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtOptionD"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14sp"
+                                tools:text="Multiple choice questions are only useful for testing surface-level recognition." />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/llPracticeBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPracticePrevious"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Previous"
+                android:textColor="@color/text_secondary"
+                app:icon="@drawable/ic_arrow_back"
+                app:iconTint="@color/text_secondary" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPracticeNext"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:paddingHorizontal="24dp"
+                android:text="Next Question"
+                app:backgroundTint="@color/brand_primary"
+                app:cornerRadius="12dp"
+                app:icon="@drawable/ic_arrow_forward"
+                app:iconGravity="textEnd" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPracticeSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:paddingHorizontal="24dp"
+                android:text="Submit"
+                android:visibility="gone"
+                app:backgroundTint="@color/brand_primary"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/resultView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:visibility="gone"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mdPracticeMcq">
+
+        <com.google.android.material.card.MaterialCardView
+            app:strokeWidth="0dp"
+            app:cardElevation="@dimen/elevation_card"
+            app:cardCornerRadius="@dimen/radius_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quiz Completed!"
+                    android:textColor="@color/text_primary"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtResultScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="18sp"
+                    tools:text="You scored 8 out of 10" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtResultPercentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/brand_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    tools:text="80%" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExitPractice"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:paddingHorizontal="24dp"
+            android:text="Exit Practice"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_logout" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

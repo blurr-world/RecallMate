@@ -29,7 +29,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:paddingTop="16dp"
+                android:paddingTop="12dp"
                 android:paddingHorizontal="16dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="24sp"
                     android:textColor="@color/text_primary"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:textStyle="bold"
                     android:layout_marginEnd="32dp"
                     android:text="@string/txt_dash_message"
@@ -60,7 +60,7 @@
                 app:cardCornerRadius="@dimen/radius_card"
                 app:cardElevation="@dimen/elevation_card_clickable"
                 app:cardBackgroundColor="@color/brand_primary"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -110,7 +110,7 @@
                 <com.google.android.material.card.MaterialCardView
                     app:strokeWidth="0dp"
                     android:id="@+id/cvQuickLinkChat"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="8dp"
                     android:layout_marginStart="16dp"
                     app:cardElevation="@dimen/elevation_card_clickable"
                     android:layout_marginEnd="8dp"
@@ -132,7 +132,7 @@
                             app:tint="@color/brand_primary" />
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="4dp"
                             android:text="@string/txt_dash_ask_ai"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -141,7 +141,7 @@
                             android:layout_height="wrap_content"/>
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="4dp"
                             android:text="@string/txt_dash_ai_message"
                             android:textSize="16sp"
                             android:textColor="@color/text_secondary"
@@ -155,7 +155,7 @@
                 <com.google.android.material.card.MaterialCardView
                     app:strokeWidth="0dp"
                     android:id="@+id/cvQuickLinkLibrary"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="8dp"
                     app:cardElevation="@dimen/elevation_card_clickable"
@@ -178,7 +178,7 @@
                             android:layout_height="32dp"/>
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="4dp"
                             android:text="@string/txt_my_library"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -187,7 +187,7 @@
                             android:layout_height="wrap_content"/>
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="4dp"
                             android:text="@string/txt_dash_lib_message"
                             android:textSize="16sp"
                             android:textColor="@color/text_secondary"
@@ -202,7 +202,8 @@
 
             <com.google.android.material.card.MaterialCardView
                 app:strokeWidth="0dp"
-                android:visibility="gone"
+                android:layout_marginTop="4dp"
+                android:visibility="visible"
                 android:layout_marginBottom="12dp"
                 android:layout_marginHorizontal="16dp"
                 android:id="@+id/cvQuickLinkMCQ"
@@ -228,7 +229,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="My MCQs"
+                        android:text="@string/txt_dash_generate_mcq"
                         android:textColor="@color/text_primary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -237,7 +238,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Access MCQs designed to sharpen thinking and prepare you for exams."
+                        android:text="@string/txt_dash_mcq_message"
                         android:textColor="@color/text_secondary"
                         android:textSize="16sp" />
 

@@ -27,6 +27,7 @@ import com.madinaappstudio.recallmate.R
 import com.madinaappstudio.recallmate.core.api.GeminiFileUploader
 import com.madinaappstudio.recallmate.core.api.GeminiUploadCallback
 import com.madinaappstudio.recallmate.core.utils.NetworkLiveData
+import com.madinaappstudio.recallmate.core.utils.extractJson
 import com.madinaappstudio.recallmate.core.utils.getFileName
 import com.madinaappstudio.recallmate.core.utils.setLoading
 import com.madinaappstudio.recallmate.core.utils.setLog
@@ -297,7 +298,6 @@ class UploadFragment : Fragment() {
                         flashcards = if (uploadConfiguration.isFlashcard) {
                             ai.flashcards
                         } else null,
-                        mcq = null
                     )
                     uploadViewModel.setUploadResponse(finalResponse)
                 } else {
@@ -312,17 +312,6 @@ class UploadFragment : Fragment() {
             }
         }
     }
-
-    private fun extractJson(raw: String): String {
-        val start = raw.indexOf('{')
-        val end = raw.lastIndexOf('}')
-        require(start != -1 && end != -1 && end > start) {
-            "No valid JSON found"
-        }
-        return raw.substring(start, end + 1)
-    }
-
-
     private fun handleLoading(isLoading: Boolean) {
         binding.btnUploadCreateStack.setLoading(
             isLoading,
