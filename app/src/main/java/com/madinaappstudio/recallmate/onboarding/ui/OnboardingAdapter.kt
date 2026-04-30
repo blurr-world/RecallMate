@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.google.android.material.textview.MaterialTextView
 import com.madinaappstudio.recallmate.R
 import com.madinaappstudio.recallmate.onboarding.model.OnboardingItem
@@ -27,7 +28,11 @@ class OnboardingAdapter(
 
     override fun onBindViewHolder(holder: PageViewHolder, position: Int) {
         val page = pages[position]
-        holder.image.setImageResource(page.image)
+        holder.image.load(page.imageUrl) {
+            crossfade(true)
+            placeholder(R.drawable.ic_launcher_background)
+            error(R.drawable.ic_launcher_background)
+        }
         holder.title.text = page.title
         holder.desc.text = page.description
     }

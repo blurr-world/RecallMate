@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="0dp">
+    android:gravity="center"
+    android:padding="24dp">
 
     <ImageView
         android:contentDescription="@string/txt_image_onboarding"
@@ -11,25 +12,24 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:scaleType="centerCrop"/>
+        android:padding="32dp"
+        android:scaleType="fitCenter"/>
 
     <com.google.android.material.textview.MaterialTextView
-        style="@style/TextAppearance.Material3.BodyMedium"
-        android:layout_marginHorizontal="16dp"
+        style="@style/TextAppearance.Material3.TitleLarge"
         android:id="@+id/txtTitleOnboarding"
-        android:textSize="18sp"
         android:textColor="@color/text_primary"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <com.google.android.material.textview.MaterialTextView
-        style="@style/TextAppearance.Material3.BodySmall"
-        android:layout_marginHorizontal="16dp"
+        style="@style/TextAppearance.Material3.BodyLarge"
         android:id="@+id/txtDesOnboarding"
-        android:textSize="15sp"
         android:textColor="@color/text_secondary"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

@@ -32,24 +32,30 @@ class OnboardingActivity : AppCompatActivity() {
 
         val pages = listOf(
             OnboardingItem(
-                R.drawable.ic_launcher_foreground,
+                "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80",
                 "Welcome to Study Assistant",
                 resources.getStringArray(
                     R.array.onboarding_content
                 )[0]
             ),
             OnboardingItem(
-                R.drawable.ic_arrow_back, "AI-Powered Summaries", resources.getStringArray(
+                "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=800&q=80",
+                "AI-Powered Summaries",
+                resources.getStringArray(
                     R.array.onboarding_content
                 )[1]
             ),
             OnboardingItem(
-                R.drawable.ic_launcher_background, "Interactive AI Tutor", resources.getStringArray(
+                "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+                "Interactive AI Tutor",
+                resources.getStringArray(
                     R.array.onboarding_content
                 )[2]
             ),
             OnboardingItem(
-                R.drawable.ic_launcher_background, "Organized Library", resources.getStringArray(
+                "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80",
+                "Organized Library",
+                resources.getStringArray(
                     R.array.onboarding_content
                 )[3]
             )

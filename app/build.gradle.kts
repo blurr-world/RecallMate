@@ -98,4 +98,7 @@ dependencies {
 
     //Markwon
     implementation("io.noties.markwon:core:4.6.2")
+
+    // Coil for image loading
+    implementation("io.coil-kt:coil:2.7.0")
 }
